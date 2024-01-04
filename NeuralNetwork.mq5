@@ -103,9 +103,24 @@ void OnStart()
                            {
                               inB[m]=inB[m+5];
                            }
-                        }
+                           inB[15]=(iOpen(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))-iLow(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))) * 100000;
+                           inB[16]=(iHigh(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))-iOpen(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))) *100000;
+                           inB[17]=(iHigh(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))-iLow(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))) * 10000;
+                           inB[18]=(iHigh(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))-iOpen(NULL,PERIOD_H1,i+1))*10000;
+                           inB[19]=(iOpen(NULL,PERIOD_H1,i+1)-iLow(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i))))*10000;
+                          
+                           inB[20]=(iHigh(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i)))-iOpen(NULL,PERIOD_H1,i))*10000;
+                           inB[21]=(iOpen(NULL,PERIOD_H1,i)-iLow(NULL,PERIOD_D1,iBarShift(NULL,PERIOD_D1,iTime(NULL,PERIOD_H1,i))))* 10000;
+                           
+                           FileWrite(HandleInputNet1Max,
+                           inB[0],inB[1],inB[2],inB[3],inB[4],inB[5],inB[6],inB[7],inB[8],inB[9],inB[10],inB[11],inB[12],
+                           inB[13],inB[14],inB[15],inB[16],inB[17],inB[18],inB[19],inB[20],inB[21] );
+                           }  
+                        
                      }
                }
+            FileClose(HandleInputNet1Max);
          }
+         Alert("Files written");
   }
 //+------------------------------------------------------------------+
