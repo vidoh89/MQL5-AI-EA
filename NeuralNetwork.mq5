@@ -3,7 +3,7 @@
 //|                                      Copyright 2024,Vince Dority |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
-//---Python script
+//---Python script for prices
 
 #property copyright "Copyright 2024,Vince Dority"
 #property link      "https://www.mql5.com"
